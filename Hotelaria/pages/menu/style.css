@@ -1,0 +1,378 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-size-base: 62.5%;
+  --font-size-body: 1.6rem;
+  --font-size-icon: 2.4rem;
+  --color-bg: #fff;
+  --color-primary: #0071c2;
+  --color-secondary: #19191c;
+  --color-text: #f9f9f9;
+  --color-scrollbar-thumb: #e0e1e7;
+  --color-footer-bg: #151823;
+  --color-footer-text: #666873;
+  --color-shadow: rgba(0, 113, 194, 0.5);
+  --transition-duration: 0.3s;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-size: var(--font-size-body);
+  background-color: var(--color-bg);
+  font-family: "Poppins", sans-serif;
+}
+
+i {
+  font-size: var(--font-size-icon);
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 20px;
+}
+
+.cabin {
+  color: var(--color-bg);
+}
+
+/* Titulo */
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  font-size: 1.9rem;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  padding: 1%;
+}
+
+/* Descricao, Comodidades, Pets */
+.descricao, .comodidades, .pets {
+  padding: 4%;
+  font-size: 1.6rem;
+  background-color: var(--color-primary);
+}
+
+.descricao h3, .comodidades h3, .pets h3 {
+  font-weight: normal;
+}
+
+/* Footer */
+.footer {
+  padding-block: 5rem;
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+}
+
+.footer__container {
+  max-width: 116rem;
+  margin: auto;
+  padding: 0 1.5rem;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  row-gap: 2rem;
+}
+
+.footer__title {
+  font-size: 1.8rem;
+  color: var(--color-bg);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer__list-item {
+  list-style: none;
+}
+
+.footer__list-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-duration);
+}
+
+.footer__list-link:hover {
+  color: var(--color-bg);
+}
+
+.company__info {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 5rem;
+}
+
+.company__logo {
+  color: var(--color-bg);
+}
+
+.company__info ul {
+  flex-direction: row;
+}
+
+.copyright {
+  margin-top: auto;
+}
+
+@media screen and (min-width: 40em) {
+  .company__info {
+    grid-column: span 2;
+  }
+}
+
+/* Global button and anchor styling */
+button, a {
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.navbar-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--transition-duration);
+}
+
+body.open .navbar-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar-burger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.navbar-menu {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  width: 270px;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #000;
+  visibility: hidden;
+  transition: transform var(--transition-duration);
+}
+
+body.open .navbar-menu {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.navbar-menu > button {
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  padding: 0 8px;
+}
+
+.navbar-menu > button.active {
+  color: inherit;
+}
+
+/* Main cards */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main.cards {
+  display: flex;
+  padding: 32px;
+}
+
+main.cards section.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--color-bg);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  max-height: 468px;
+  margin-left: 32px;
+}
+
+main.cards section.card:first-child {
+  margin-left: 0;
+}
+
+main.cards section.card .icon {
+  width: 220px;
+  height: 220px;
+}
+
+main.cards section.card img {
+  width: 100%;
+  height: 100%;
+}
+
+main.cards section.card h3 {
+  font-size: 1rem;
+  margin: 16px 0;
+}
+
+main.cards section.card span {
+  font-weight: 300;
+  max-width: 240px;
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+}
+
+main.cards section.card button {
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  border-radius: 32px;
+  border: 0;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-bg);
+  margin-bottom: 16px;
+}
+
+main.cards section.card.contact button, 
+main.cards section.card.shop button, 
+main.cards section.card.about button {
+  background: var(--color-primary);
+}
+
+main.cards section.card.contact,
+main.cards section.card.shop,
+main.cards section.card.about {
+  box-shadow: 20px 20px 50px -30px var(--color-shadow);
+}
+
+/* Media Queries */
+@media only screen and (max-width: 720px) {
+  .titulo {
+    margin-top: 15%;
+    font-size: 1.7rem;
+  }
+
+  .descricao, .comodidades, .pets {
+    padding: 10%;
+    font-size: 1.3rem;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-overlay {
+    display: none;
+  }
+
+  .navbar-burger {
+    display: none;
+  }
+
+  main.cards {
+    flex-direction: column;
+  }
+
+  main.cards section.card {
+    margin-left: 0;
+    margin-bottom: 32px;
+  }
+
+  main.cards section.card:last-child {
+    margin-bottom: 0;
+  }
+
+  main.cards section.card button {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  .navbar-overlay {
+    display: none;
+  }
+
+  .navbar-burger {
+    display: none;
+  }
+
+  .navbar-menu {
+    position: static;
+    transform: none;
+    width: auto;
+    background: transparent;
+    flex-direction: row;
+    visibility: visible;
+  }
+}
